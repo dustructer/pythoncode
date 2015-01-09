@@ -91,9 +91,10 @@ def main():
 			if len(deck) < 4:
 				newDeck()
 				shuffle()
-			if (s == 'exit'):
+			if s in ['exit', 'q']:
 				sys.exit(0)
 			elif (s == 'play'):
+				os.system('clear')
 				for x in xrange(0,4):
 					card = deck.pop(0).split(';')
 					l.append(str(card[0]))
@@ -113,7 +114,6 @@ def main():
 						found = True
 						break
 				if not found:
-					os.system('clear')
 					print 'no solution. play again'
 				else:
 					print 'Elapsed calculation time : ' + str(round((time.time()-et)*10000)/10) + ' ms'
@@ -124,10 +124,12 @@ def main():
 			elif (s == 'new'):
 				newDeck()
 				os.system('clear')
-				print 'Type play to play a new round.'
-				print 'Type help for a list of commands.'
+				print 'A new ordered deck has been made.'
+				print 'Enter \'shuffle\' to shuffle the deck.'
+				print 'Enter \'play\' to play a new round.'
 			elif (s == 'shuffle'):
 				shuffle()
+				print 'The deck has been shuffled.'
 			elif (s == 'show'):
 				printDeck()
 			elif (s == 'help'):
