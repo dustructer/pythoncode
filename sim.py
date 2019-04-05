@@ -96,6 +96,10 @@ def calcT(dice):
 	return total/len(dice)
 #def upgrade(s, l, i, st):
 
+def roll(dice):
+	return random.choice(dice[:-1])
+
+
 def main():
 	global fl
 	dice = []
@@ -104,7 +108,7 @@ def main():
 		s = input().strip()
 		if (s == 'q'):
 			sys.exit(0)
-		elif (s.startswith('d')):
+		elif (s.startswith('d ')):
 			dms = s.split(' ')
 			if len(dms) < 2:
 				t = 1
@@ -117,7 +121,7 @@ def main():
 		elif (s == 'l'):
 			for x in dice:
 				printDice(dice)
-		elif (s.startswith('r')):
+		elif (s.startswith('r ')):
 			rms = s.split(' ')
 			ttp = int(rms[1])
 			raid = True
@@ -134,8 +138,7 @@ def main():
 					printDice(curTD)
 					print("Total raids: " + str(count))
 					raid = False
-				
-		elif (s.startswith('p')):
+		elif (s.startswith('p ')):
 			curdw = []
 			curLs = []
 			pms = s.split(' ')
@@ -179,6 +182,13 @@ def main():
 				fl = []
 				#for x in count.keys():
 				#	print str(x) + ":" + str(count[x])
+		elif (s.startswith('c')):
+			nd = newDice(curdw, curLs)
+			printDice(nd)
+			base = 3
+			spell = roll(nd)
+			print ("T" + str(spell) + " spell deals " + str(spell*base) + " damage.")
+
 
 if __name__ == '__main__':
 	main() 
